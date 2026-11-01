@@ -1,0 +1,16 @@
+{
+  "name": "manometer-originator-kit",
+  "version": "1.0.1",
+  "description": "Seal and send signal proposals to the Manometer referee from Node or the browser, with the game catalog and drand rounds.",
+  "main": "src/index.js",
+  "bin": { "manometer-originator": "bin/manometer-originator.js" },
+  "files": ["src", "lib", "bin", "dist", "vendor", "examples", "README.md", "LICENSE", "NOTICE"],
+  "engines": { "node": ">=18" },
+  "dependencies": { "tlock-js": "0.9.0" },
+  "license": "Apache-2.0",
+  "repository": "github:Manometer-bet/manometer-originator-kit",
+  "scripts": {
+    "build": "node scripts/build-browser.js",
+    "test": "node test/run.js"
+  }
+}
