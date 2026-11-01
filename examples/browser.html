@@ -1,0 +1,14 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Originator kit in the browser</title>
+<script src="../vendor/tlock.bundle.js"></script>
+<script src="../dist/originator-kit.js"></script>
+<script>
+  // Your API key stays in this page: only ciphertext and the key go to the referee.
+  const client = ManometerKit.createClient({ sourceId: "your-source", apiKey: prompt("API key") });
+  client.games("arsenal").then(async (games) => {
+    const p = ManometerKit.buildProposal({ sourceId: "your-source", game: games[0], market: "1x2", selection: "1", minOdds: 2.1, proposalId: crypto.randomUUID() });
+    const r = await client.send(p);
+    document.body.textContent = r.ok ? "Receipt " + r.receipt.rid : r.error;
+  });
+</script>
