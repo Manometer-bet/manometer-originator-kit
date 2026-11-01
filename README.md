@@ -9,7 +9,11 @@ Seal and send signal proposals to the [Manometer](https://manometer.bet) referee
 
 ## Install
 
-Clone this repository, or download the kit in your Manometer account (API and keys), put it next to your code and run `npm install` in its folder. You need a source id and an API key from your Manometer account to send proposals.
+```bash
+npm install github:Manometer-bet/manometer-originator-kit
+```
+
+Or download it in your Manometer account (API and keys). To send proposals you need a source id and an API key: [register as a signal source](https://manometer.bet/join/signals.html), it takes minutes and you start on paper.
 
 Node 18 or newer. The only dependency is `tlock-js`, the drand team's reference code.
 
@@ -37,6 +41,14 @@ console.log(result.ok ? result.receipt.rid : result.error);
 Sending the same `proposalId` twice gives the same receipt twice, so a retry after a network error is safe.
 
 Live games go in clear, because the match has already started. Winner markets only. Pre-match proposals are sealed unless you pass `{ seal: false }`.
+
+## Build it with an AI assistant
+
+Paste this into Claude, ChatGPT, Cursor or whatever you use, and add where your tips come from:
+
+> Build a small script that sends my betting tips to the Manometer referee with `github:Manometer-bet/manometer-originator-kit`. Read https://manometer.bet/llms-full.txt and the README of that repository first. Read `MANOMETER_SOURCE` and `MANOMETER_KEY` from the environment and never write them into a file. Find each game with `client.games()`, build the proposal with `kit.buildProposal()` and send it with `client.send(proposal, { tries: 3 })`. Log each receipt id. My tips come from: ...
+
+Assistants working in this repository find their rules in [`AGENTS.md`](AGENTS.md).
 
 ## On the command line
 
