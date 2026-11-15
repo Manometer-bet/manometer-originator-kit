@@ -1,4 +1,4 @@
-/* manometer-originator-kit 1.0.1 · Apache-2.0 · https://manometer.bet/open-source.html */
+/* manometer-originator-kit 1.0.2 · Apache-2.0 · https://manometer.bet/open-source.html */
 (function (root) {
 "use strict";
 var __m = {}, __c = {};
@@ -82,7 +82,7 @@ __m["../lib/feed-core.js"] = function (module, exports, require) {
 
   // ---------- market taxonomy -------------------------------------------------------------
   // scope = which part of the event the bet refers to; unit = what the line counts.
-  var FEED_SPORTS = ["fb", "basket", "tennis", "cs2", "icehockey", "volleyball", "amfootball", "baseball"];
+  var FEED_SPORTS = ["fb", "basket", "tennis", "cs2", "icehockey", "volleyball", "amfootball", "baseball", "handball"];
   var FEED_MARKETS = {
     fb: {
       "1x2":   { scopes: ["match"], unit: null,     needsLine: false, sels: ["1", "X", "2"] },
@@ -114,7 +114,10 @@ __m["../lib/feed-core.js"] = function (module, exports, require) {
     icehockey:  { "ml": { scopes: ["match"], unit: null, needsLine: false, sels: ["home", "away"] } },
     volleyball: { "ml": { scopes: ["match"], unit: null, needsLine: false, sels: ["home", "away"] } },
     amfootball: { "ml": { scopes: ["match"], unit: null, needsLine: false, sels: ["home", "away"] } },
-    baseball:   { "ml": { scopes: ["match"], unit: null, needsLine: false, sels: ["home", "away"] } }
+    baseball:   { "ml": { scopes: ["match"], unit: null, needsLine: false, sels: ["home", "away"] } },
+    // Result after regular time (1X2 at the book), home or away only; a draw loses. Pinnacle prices handball draw-no-bet,
+    // so fairOdds must already be the 3-way fair of that side (DNB fair divided by 1 - draw share).
+    handball:   { "ml": { scopes: ["match"], unit: null, needsLine: false, sels: ["home", "away"] } }
   };
 
   // ---------- proposal lifecycle ----------------------------------------------------------
